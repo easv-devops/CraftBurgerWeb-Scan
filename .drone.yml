@@ -7,12 +7,7 @@ steps:
     image: boulundeasv/dotnet-sdk-with-java
     commands: 
       - cd backend/api
-      - dotnet sonarscanner begin 
-      /k:"easv-devops_CraftBurgerWeb-Scan_AY2T48iGEVvRW2O60D7r" 
-      /d:sonar.host.url="http://sonar.setgo.dk:9000"  
-      /d:sonar.token="sqp_223884f51d5abb6a3d606799d4175387a7663f1d"
-      /d:sonar.cs.vscodecoveragexml.reportsPaths=coverage.xml
-      /d:sonar.qualitygate.wait=true
+      - dotnet sonarscanner begin /k:"easv-devops_CraftBurgerWeb-Scan_AY2T48iGEVvRW2O60D7r" /d:sonar.host.url="http://sonar.setgo.dk:9000" /d:sonar.token="sqp_223884f51d5abb6a3d606799d4175387a7663f1d" /d:sonar.cs.vscodecoveragexml.reportsPaths=coverage.xml /d:sonar.qualitygate.wait=true
       - dotnet build
       - dotnet sonarscanner end /d:sonar.token="sqp_223884f51d5abb6a3d606799d4175387a7663f1d"
 
