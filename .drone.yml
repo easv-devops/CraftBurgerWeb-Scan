@@ -1,0 +1,17 @@
+kind: pipeline
+type: docker
+name: integration
+
+steps:
+  - name: build
+    image: mcr.microsoft.com/dotnet/sdk:latest
+    commands: 
+      - cd backend/src/api
+      - apt-get update && apt-get install -y nodejs npm
+      - dotnet build
+
+  - name: test
+    image: mcr.microsoft.com/dotnet/sdk:7.0
+    commands: 
+      - cd backend/test/api
+      - dotnet test
