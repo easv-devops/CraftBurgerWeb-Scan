@@ -18,8 +18,7 @@ steps:
       - cd backend/api
       - apt-get update && apt-get install -y nodejs npm
       - dotnet build
-      - pwsh -File $(pwd)/bin/Debug/net8.0/playwright.ps1 install --with-deps
-
+      - pwsh -File ./bin/Debug/net8.0/playwright.ps1 install --with-deps
 
   - name: test
     image: mcr.microsoft.com/dotnet/sdk:8.0
