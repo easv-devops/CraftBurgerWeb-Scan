@@ -6,7 +6,7 @@ steps:
   - name: build
     image: mcr.microsoft.com/dotnet/sdk:latest
     commands: 
-      - cd backend/src/api
+      - cd backend/api
       - apt-get update && apt-get install -y nodejs npm
       - dotnet build
 
