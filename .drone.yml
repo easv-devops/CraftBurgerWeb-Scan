@@ -8,18 +8,19 @@ steps:
     commands: 
       - cd backend/api
       - dotnet sonarscanner begin /k:"easv-devops_CraftBurgerWeb-Scan_AY2T48iGEVvRW2O60D7r" /d:sonar.host.url="http://sonar.setgo.dk:9000" /d:sonar.token="sqp_223884f51d5abb6a3d606799d4175387a7663f1d" /d:sonar.cs.vscodecoveragexml.reportsPaths=coverage.xml /d:sonar.qualitygate.wait=true
-      - dotnet build
+      - dotnet build --no-incremental
+      - dotnet-coverage collect "dotnet test" -f xml -o coverage.xml
       - dotnet sonarscanner end /d:sonar.token="sqp_223884f51d5abb6a3d606799d4175387a7663f1d"
 
   - name: build
-    image: mcr.microsoft.com/dotnet/sdk:7.0
+    image: mcr.microsoft.com/dotnet/sdk:8.0
     commands: 
       - cd backend/api
       - apt-get update && apt-get install -y nodejs npm
       - dotnet build
 
   - name: test
-    image: mcr.microsoft.com/dotnet/sdk:7.0
+    image: mcr.microsoft.com/dotnet/sdk:8.0
     commands: 
       - cd backend/test/
       - dotnet test
