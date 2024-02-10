@@ -13,5 +13,5 @@ steps:
   - name: test
     image: mcr.microsoft.com/dotnet/sdk:7.0
     commands: 
-      - cd backend/test/api
-      - dotnet test
+      - cd backend/test/
+      - dotnet test --no-build --filter FullyQualifiedName~test.api
