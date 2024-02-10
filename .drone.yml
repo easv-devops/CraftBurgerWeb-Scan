@@ -23,5 +23,5 @@ steps:
   - name: test
     image: mcr.microsoft.com/dotnet/sdk:8.0
     commands: 
-      - cd backend/test/api/
+      - cd backend/test/
       - dotnet test
